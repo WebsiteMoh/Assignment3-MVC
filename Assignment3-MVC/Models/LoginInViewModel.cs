@@ -9,5 +9,6 @@ namespace Assignment3_MVC.Models
         public String Email { get; set; }
         [Required(ErrorMessage = "Password is required")]
          public String Password { get; set; }
+
     }
 }
