@@ -1,0 +1,79 @@
+﻿@model IEnumerable<EmployeeDTO>;
+
+@{
+   
+    ViewData["Title"] = "Search";
+
+}
+
+<h1>Search</h1>
+<form asp-action="Search">
+    <div class="col-8">
+        <input type="text" class="form-control" name="CivilID" placeholder="Search by Civil ID" />
+    </div>
+    <br/>
+        <div class="col-4">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+   
+   
+
+</form>
+
+@if(Model.Count() > 0)
+    {
+        <h1>Employees</h1>
+        <table class=" table table-striped table-dark">
+            <thead>
+
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Fname</th>
+                    <th scope="col">Lname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone_Number</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Civil ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Emp in Model)
+                {
+                    <tr>
+                        <th scope="row">@Emp.Id</th>
+                        <td>@Emp.Id</td>
+                        <td>@Emp.Fname</td>
+                        <td>@Emp.Lname</td>
+                        <td>@Emp.Email</td>
+                        <td>@Emp.Phone_Number</td>
+                        <td>@Emp.age</td>
+                        <td>@Emp.CivilID_Number</td>
+                        <partial name="PartialPage" model="Emp.Id">
+
+
+                    </tr>
+
+                }
+
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h3>
+            There is no Employess
+        </h3>
+    }
+    <center>
+    <div class="col-8">
+        <a asp-action="index">Go back</a>
+    </div>
+
+
+    </center>
+
+
+
+

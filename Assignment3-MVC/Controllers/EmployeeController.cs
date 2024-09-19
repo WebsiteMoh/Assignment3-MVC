@@ -1,16 +1,20 @@
 ﻿using Company.data.Entities;
-using Company.Services;
+using Company.Services.Departments_Services;
+using Company.Services.Employees;
+using Company.Services.Employees.DTO;
 using Microsoft.AspNetCore.Mvc;
 namespace Assignment3_MVC.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _context;
+        private readonly ISdepartment _context2;
 
-        public EmployeeController(IEmployeeService context)
+
+        public EmployeeController(IEmployeeService context, ISdepartment context2)
         {
             _context = context;
-
+            _context2 = context2;
         }
 
         public IActionResult Index()
@@ -22,17 +26,21 @@ namespace Assignment3_MVC.Controllers
         }
         public IActionResult Create()
         {
+            var departments = _context2.get_all();
+            ViewBag.Department = departments;
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(EmployeeDTO employee)
         {
             try
             {
                 
                 if (ModelState.IsValid)
-                {   
-
+                {
+                    var departments = _context2.get_all();
+                    ViewBag.Department = departments;
                     _context.add(employee);
                     return RedirectToAction(nameof(Index));
                 }
@@ -45,7 +53,7 @@ namespace Assignment3_MVC.Controllers
             }
         }
         [HttpGet]
-        public IActionResult Detials(Employee employee)
+        public IActionResult Detials(EmployeeDTO employee)
         {
             if(employee == null)
             {
@@ -66,18 +74,30 @@ namespace Assignment3_MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Update(Employee employee,int ID)
+        public IActionResult Update(EmployeeDTO employee,int ID)
         {
             var Emp = _context.select_by_ID(employee.Id);
             return Detials(Emp);
         }
 
         [HttpPost]
-        public IActionResult Update(Employee employee)
+        public IActionResult Update(EmployeeDTO employee)
         {
 
             _context.update(employee);
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Search(String CivilID) {
+            if (String.IsNullOrEmpty(CivilID))
+            {
+                var emp = _context.get_all();
+                return View(emp);
+            }
+            else
+            {
+                var emp = _context.Search(CivilID);
+                return View(emp);
+            }
         }
     }
 }

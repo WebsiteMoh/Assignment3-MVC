@@ -34,4 +34,15 @@
     <ProjectReference Include="..\Company.Services\Company.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\files\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\fonts\.DS_Store" />
+    <None Include="wwwroot\fonts\icomoon\demo-files\demo.js" />
+    <None Include="wwwroot\fonts\icomoon\fonts\icomoon.svg" />
+    <None Include="wwwroot\Layoutimages\.DS_Store" />
+  </ItemGroup>
+
 </Project>

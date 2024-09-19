@@ -8,9 +8,18 @@
 
   <ItemGroup>
     <Compile Remove="Entites\Department.cs" />
+    <Compile Remove="Migrations\20240906082350_add2.cs" />
+    <Compile Remove="Migrations\20240906082350_add2.Designer.cs" />
+    <Compile Remove="Migrations\20240906093854_add3.cs" />
+    <Compile Remove="Migrations\20240906093854_add3.Designer.cs" />
+    <Compile Remove="Migrations\20240906100713_add6.cs" />
+    <Compile Remove="Migrations\20240906100713_add6.Designer.cs" />
+    <Compile Remove="Migrations\20240906110946_add8.cs" />
+    <Compile Remove="Migrations\20240906110946_add8.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Employee>;
+﻿@model IEnumerable<EmployeeDTO>;
 
 
 @{
@@ -36,9 +36,7 @@
                 <td>@Emp.Phone_Number</td>
                 <td>@Emp.age</td>
                 <td>@Emp.CivilID_Number</td>
-                    <td> <a class="nav-link text-light" asp-area="" asp-controller="Employee" asp-action="Delete" asp-route-id="@Emp.Id">Delete</a></td>
-                    <td> <a class="nav-link text-light" asp-area="" asp-controller="Employee" asp-action="Detials" asp-route-id="@Emp.Id">Detials</a></td>
-                    <td> <a class="nav-link text-light" asp-area="" asp-controller="Employee" asp-action="Update" asp-route-id="@Emp.Id">Update</a></td>
+                  <partial name="PartialPage" model="Emp.Id">
 
             </tr>
 
@@ -52,6 +50,12 @@
             <a class="nav-link text-dark" asp-area=""  asp-action="Create">Add new Employee</a>
     </button>
 </center>
+<br />
+    <center>
+        <button>
+            <a class="nav-link text-dark" asp-area="" asp-action="Search">Search for Employee by Civil ID</a>
+        </button>
+    </center>
 }
 else
 {

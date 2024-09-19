@@ -7,19 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Departments_Services\NewFolder\**" />
     <Compile Remove="NewFolder1\**" />
     <Compile Remove="NewFolder2\**" />
+    <Compile Remove="NewFolder3\**" />
     <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="Departments_Services\NewFolder\**" />
     <EmbeddedResource Remove="NewFolder1\**" />
     <EmbeddedResource Remove="NewFolder2\**" />
+    <EmbeddedResource Remove="NewFolder3\**" />
     <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="Departments_Services\NewFolder\**" />
     <None Remove="NewFolder1\**" />
     <None Remove="NewFolder2\**" />
+    <None Remove="NewFolder3\**" />
     <None Remove="NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Class1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>

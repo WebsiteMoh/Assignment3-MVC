@@ -47,5 +47,10 @@ namespace Company.Repositry.Repositiers
             _context.Update(Item);
             _context.SaveChanges();
         }
+        public IEnumerable<Employee> Search(String Civil_ID)
+        {
+        var employee= _context.Employees.Where(emp=>emp.CivilID_Number.Trim().Contains(Civil_ID.Trim())).ToList();
+            return employee;
+        }
     }
 }

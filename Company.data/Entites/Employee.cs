@@ -1,4 +1,5 @@
-﻿using Company.data.Model;
+﻿using Company.data.Entites;
+using Company.data.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,7 +23,10 @@ namespace Company.data.Entities
         [StringLength(9)]
         [Required]
         public String Phone_Number { get; set; }
-     
+
+        public int? Dep_ID { get; set; }
+        public String ImgURL { get; set; }
+
   
 
     }

@@ -1,6 +1,6 @@
-﻿@model Employee;
+﻿@model EmployeeDTO;
 @{
-    ViewData["Title"] = "Create";
+    var departments = new SelectList(ViewBag.Department, nameof(DepartmentDTO.ID), nameof(DepartmentDTO.Name));
 }
 
 <h1>Create new Employee</h1>
@@ -37,6 +37,27 @@
         <label class="col-form-label" asp-for="age">Age</label>
         <input type="number" class="form-control" asp-for="age">
     </div>
+    <div class="form-check">
+
+        <label class="col-form-label" asp-for="createdAt">Creating Date</label>
+        <input type="date" class="form-control" asp-for="createdAt">
+    </div>
+    <div class="form-check">
+
+        <label class="col-form-label" asp-for="Dep_ID">Creating Date</label>
+        <select  class="form-control" asp-items="@departments" asp-for="Dep_ID">
+            <option value="IT">
+           select Department
+            </option>
+        </select>
+    </div> 
+    <div class="form-check">
+
+        <label class="col-form-label" asp-for="ImagePath">Choose Image</label>
+        <input type="file" class="form-control" asp-for="ImagePath">
+        </input>
+    </div>
+
     <br/>
     <button type="submit" value="Create" class="btn btn-primary">Add new Employee</button>
 </form>

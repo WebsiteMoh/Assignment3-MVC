@@ -14,5 +14,6 @@ namespace Company.Repositry.Interfaces
         public IEnumerable<Employee> get_all();
         public Employee select_by_ID(int? ID);
         public void update(Employee Item);
+        public IEnumerable<Employee> Search(String Civil_ID);
     }
 }
