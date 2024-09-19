@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Company.Repositry.Interfaces
+namespace Company.Services
 {
-    public interface EmployeeInterface
+    public interface IEmployeeService
     {
         public void add(Employee Item);
         public void delete(Employee Item);

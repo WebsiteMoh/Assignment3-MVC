@@ -35,7 +35,6 @@ namespace Company.data.Migrations
                     age = table.Column<int>(type: "int", maxLength: 65, nullable: false),
                     CivilID_Number = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
                     departmentId = table.Column<int>(type: "int", nullable: false),
-                    Dept_ID = table.Column<int>(type: "int", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone_Number = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),

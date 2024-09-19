@@ -2,6 +2,7 @@
 using Company.data.Entities;
 using Company.Repositry.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,15 @@ namespace Company.Repositry.Repositiers
         public void add(Employee Item)
         {
             _context.Add(Item);
+            _context.SaveChanges();
+
         }
 
         public void delete(Employee Item)
         {
             _context.Remove(Item);
+            _context.SaveChanges();
+
         }
 
         public IEnumerable<Employee> get_all()
@@ -32,7 +37,7 @@ namespace Company.Repositry.Repositiers
             return _context.Employees.ToList();
         }
 
-        public Employee select_by_ID(int ID)
+        public Employee select_by_ID(int ? ID)
         {
             return _context.Employees.Find(ID);
         }
@@ -40,6 +45,7 @@ namespace Company.Repositry.Repositiers
         public void update(Employee Item)
         {
             _context.Update(Item);
+            _context.SaveChanges();
         }
     }
 }

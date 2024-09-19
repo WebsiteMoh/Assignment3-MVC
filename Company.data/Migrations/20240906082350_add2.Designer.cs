@@ -4,6 +4,7 @@ using Company.data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Company.data.Migrations
 {
     [DbContext(typeof(CompanyDBcontext))]
-    partial class CompanyDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20240906082350_add2")]
+    partial class add2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +36,7 @@ namespace Company.data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("createdAt")
@@ -60,6 +63,9 @@ namespace Company.data.Migrations
                     b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Dept_ID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -67,6 +73,10 @@ namespace Company.data.Migrations
                     b.Property<string>("Fname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Lname")
                         .IsRequired()
@@ -83,7 +93,7 @@ namespace Company.data.Migrations
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("departmentId")
+                    b.Property<int>("departmentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -97,7 +107,9 @@ namespace Company.data.Migrations
                 {
                     b.HasOne("Company.data.Entities.Department", "department")
                         .WithMany("Employees")
-                        .HasForeignKey("departmentId");
+                        .HasForeignKey("departmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("department");
                 });

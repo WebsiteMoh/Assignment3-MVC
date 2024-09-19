@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces\DepartmentInterface.cs" />
+    <Compile Remove="Repositiers\DepartmentRep.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Company.data\Company.data.csproj" />
   </ItemGroup>
 

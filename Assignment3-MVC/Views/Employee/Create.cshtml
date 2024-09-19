@@ -1,0 +1,43 @@
+﻿@model Employee;
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new Employee</h1>
+<form asp-action="Create">
+    <div class="form-check">
+   
+        <label class="col-form-label" asp-for="Fname">Fname</label>
+        <input type="text" class="form-control" asp-for="Fname">
+    </div>
+    <div class="form-check">
+       
+        <label class="col-form-label" asp-for="Lname">Lname</label>
+        <input type="text" class="form-control" asp-for="Lname">
+    </div>
+     
+    <div class="form-check">
+
+        <label class="col-form-label" asp-for="CivilID_Number">Civil ID</label>
+        <input type="text" class="form-control" asp-for="CivilID_Number">
+    </div>
+    <div class="form-check">
+
+        <label class="col-form-label" asp-for="Phone_Number">Phone Number</label>
+        <input type="number" class="form-control" asp-for="Phone_Number">
+    </div>
+    <div class="form-check">
+
+        <label class="col-form-label" asp-for="Email">Email</label>
+        <input type="email" class="form-control" asp-for="Email">
+    </div>
+ 
+    <div class="form-check">
+
+        <label class="col-form-label" asp-for="age">Age</label>
+        <input type="number" class="form-control" asp-for="age">
+    </div>
+    <br/>
+    <button type="submit" value="Create" class="btn btn-primary">Add new Employee</button>
+</form>
+

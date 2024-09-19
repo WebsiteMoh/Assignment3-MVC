@@ -2,7 +2,7 @@ using Company.data.Context;
 using Company.Repositry.Interfaces;
 using Company.Repositry.Repositiers;
 using Microsoft.EntityFrameworkCore;
-
+using Company.Services;
 namespace Assignment3_MVC
 {
     public class Program
@@ -17,8 +17,8 @@ namespace Assignment3_MVC
                 option=>option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                 );
 
-            builder.Services.AddScoped<DepartmentInterface, DepartmentRep>();
             builder.Services.AddScoped<EmployeeInterface, EmployeeRep>();
+            builder.Services.AddScoped<IEmployeeService, EmpService>();
 
             var app = builder.Build();
 

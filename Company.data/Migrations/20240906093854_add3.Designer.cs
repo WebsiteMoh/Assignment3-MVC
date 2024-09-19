@@ -4,6 +4,7 @@ using Company.data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Company.data.Migrations
 {
     [DbContext(typeof(CompanyDBcontext))]
-    partial class CompanyDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20240906093854_add3")]
+    partial class add3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +36,7 @@ namespace Company.data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("createdAt")
@@ -68,6 +71,10 @@ namespace Company.data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
+
                     b.Property<string>("Lname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -83,7 +90,7 @@ namespace Company.data.Migrations
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("departmentId")
+                    b.Property<int>("departmentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -97,7 +104,9 @@ namespace Company.data.Migrations
                 {
                     b.HasOne("Company.data.Entities.Department", "department")
                         .WithMany("Employees")
-                        .HasForeignKey("departmentId");
+                        .HasForeignKey("departmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("department");
                 });
